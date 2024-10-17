@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdutoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Paginas
 Route::get('/', function () {
     return view('pages.Home');
 });
@@ -34,6 +36,11 @@ Route::get('/usuario', function () {
 Route::get('/criacao-produto', function () {
     return view('pages.CriacaoProduto');
 });
+
+// Teste de retorno do banco
+Route::get('/produtos', [ProdutoController::class, 'produtos']);
+
+
 // Route::get('/url', function () {
 //     return view('pages.url');
 // });
