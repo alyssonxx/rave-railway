@@ -23,13 +23,13 @@ Route::get('/register', function () {
     return view('pages.registro');
 });
 Route::get('/marketplace', function () {
-    return view('pages.marketplace');
+    return view('pages.Marketplace');
 });
 Route::get('/pagina-produto', function () {
     return view('pages.paginaproduto');
 });
 Route::get('/usuario', function () {
-    return view('pages.paginausuario');
+    return view('pages.PaginaUsuario');
 });
 Route::get('/criacao-produto', function () {
     return view('pages.criacaoproduto');
