@@ -14,25 +14,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pages.home');
+    return view('pages.Home');
 });
 Route::get('/login', function () {
-    return view('pages.login');
+    return view('pages.Login');
 });
 Route::get('/register', function () {
-    return view('pages.registro');
+    return view('pages.Registro');
 });
 Route::get('/marketplace', function () {
     return view('pages.Marketplace');
 });
 Route::get('/pagina-produto', function () {
-    return view('pages.paginaproduto');
+    return view('pages.PaginaProduto');
 });
 Route::get('/usuario', function () {
     return view('pages.PaginaUsuario');
 });
 Route::get('/criacao-produto', function () {
-    return view('pages.criacaoproduto');
+    return view('pages.CriacaoProduto');
 });
 // Route::get('/url', function () {
 //     return view('pages.url');
