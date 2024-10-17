@@ -1,0 +1,237 @@
+/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Categorias */
+.categories {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+.categories-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.category-item {
+    text-align: center;
+    position: relative;
+    padding-right: 30px; /* Espaço para a linha */
+}
+
+.category-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 60%;
+    background-color: #ff0000; /* Cor da linha */
+}
+
+.category-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* Preenche a área circular */
+    margin-bottom: 10px;
+    border-radius: 50%; /* Faz com que a imagem fique redonda */
+}
+
+/* Seção de Produtos em Destaque */
+.featured-products {
+    padding: 50px 0;
+}
+
+.featured-products .featured-header {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.featured-products .featured-header .divider{
+    width: 4px;
+    height: 50px;
+    background-color: #4c6b41;
+    border-radius: 10px;
+}
+.featured-products .featured-header h2{
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.featured-products .featured-header p{
+    margin: 0;
+}
+
+.featured-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.product-item {
+    text-align: center;
+    width: 200px;
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+/* Seção Junte-se a Nós */
+.join-us-section {
+    background-color: #4c6b41;
+    color: white;
+}
+
+.join-us-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.join-us-section p {
+    font-size: 0.825rem;
+    margin: 0;
+}
+.join-us-section p:last-child{
+    font-weight: bold;
+}
+
+.join-us-section .btn {
+    margin-top: 10px;
+    background-color: #FFFFFF;
+    border: none;
+    color: #757575;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    text-align: start;
+}
+.join-us-section .btn-primary:not(:disabled):not(.disabled).active,.join-us-section .btn-primary:not(:disabled):not(.disabled):active,.join-us-section .show>.btn-primary.dropdown-toggle{
+    background-color: #92B66C !important;
+    border-color: #92B66C !important;
+}
+
+.join-us-section .container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.join-us-section .call-to-action{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.join-us-section .img-call{
+    width: 50%;
+    height: 350px;
+}
+
+.join-us-section .img-call img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Produtos em destaque */
+.featured-products .product-item{
+    text-align: center;
+}
+
+.featured-products .product-item p {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.featured-products .container .product-destaque{
+    gap: 20px 0;
+}
+
+/* Testemunhos */
+.testimonials-section {
+    background-color: #f8e1a1;
+}
+
+.testimonials-card {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.testimonials-card p {
+    font-style: italic;
+    text-align: start;
+    margin-bottom: 15px;
+}
+.testimonials-card h6{
+    text-align: start;
+}
+.testimonials-card h5 {
+    font-weight: bold;
+    color: #333;
+}
+.testimonials-card img{
+    margin-right: 10px;
+}
+
+/* Colaboradores */
+.collaborators .collaborator-card {
+    text-align: center;
+}
+
+.collaborators .collaborator-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+
+}
+
+.collaborators .collaborator-card h5 {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+
+
+/* Banner principal */
+.main-banner {
+    /* background-color: #28a745; */
+    background-image: url('/assets/images/banner-home.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-text {
+    color: white;
+    text-align: center;
+}
+
+.banner-text h1 {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.banner-text p {
+    font-size: 1.5rem;
+    font-weight: lighter;
+}
