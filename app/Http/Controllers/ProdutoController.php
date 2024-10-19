@@ -61,6 +61,6 @@ class ProdutoController extends Controller
             abort(404); // Retorna 404 se o produto não for encontrado
         }
 
-        return view('pages.paginaproduto', compact('products'));
+        return view('pages.PaginaProduto', compact('products'));
     }
 }
