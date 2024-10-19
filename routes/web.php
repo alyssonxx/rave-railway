@@ -24,24 +24,14 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('pages.Registro');
 });
-Route::get('/marketplace', function () {
-    return view('pages.Marketplace');
-});
-Route::get('/pagina-produto', function () {
-    return view('pages.PaginaProduto');
-});
+Route::get('/pagina-produto/{id}', [ProdutoController::class, 'show'])->name('pages.paginaproduto');
+
 Route::get('/usuario', function () {
     return view('pages.PaginaUsuario');
 });
-Route::get('/criacao-produto', function () {
-    return view('pages.CriacaoProduto');
-});
 
-// Teste de retorno do banco
-Route::get('/produtos', [ProdutoController::class, 'produtos']);
+Route::get('/produto/create', [ProdutoController::class, 'create'])->name('produto.create');
+Route::post('/produto/store', [ProdutoController::class, 'store'])->name('produto.store');
+Route::get('/marketplace', [ProdutoController::class, 'index'])->name('produto.marketplace');
 
-
-// Route::get('/url', function () {
-//     return view('pages.url');
-// });
 

@@ -161,6 +161,7 @@
 }
 .card-img:hover .hover-text{
     bottom: 20px;
+    left: 5px;
     opacity: 1;
     transition: 0.5s;
 }
