@@ -11,7 +11,7 @@ class ProdutoController extends Controller
     public function index()
     {
         $events = Products::all();
-        return view("Pages.Marketplace", ['events' => $events]);
+        return view("pages.Marketplace", ['events' => $events]);
     }
 
     // Formulário de criação de produto
