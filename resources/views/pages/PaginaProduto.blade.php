@@ -1,87 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/index.css">
+@extends('layouts.app')
+@section('title', 'Página de produto')
+
+@section('styles')
     <link rel="stylesheet" href="/assets/css/paginaProduto.css">
-    <title>Pagina Usuario</title>
-</head>
-<body>
-    <header class="header-reventart">
-        <div class="container">
-          <nav class="navbar navbar-expand-lg navbar-light bg-light nav-revetart">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">
-                <img class="logo" src="/assets/images/logo.png" alt="">
-              </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./Home.html">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Produtos</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Artesãos</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Como Funciona</a>
-                  </li>
-                </ul>
-                <div class="action-nav">
-                  <span class="navbar-text">
-                    Olá, <strong>Usuário</strong>
-                  </span>
-                  <button class="btn btn-primary" type="button">Acessar Conta</button>
-                </div>
+@endsection
+
+@section('content')
+  <main class="product-page">
+      <div class="container">
+          <section class="product-details">
+              <div class="product-image">
+                  <img src="/images/{{ $products->imagem }}" alt="{{ $products->nomeP }}">
               </div>
-            </div>
-          </nav>
-        </div>
-    </header>
+              
+              <div class="product-info">
 
-<!-- PRODUTO -->
+              <h1 class="title-product">{{ $products->nomeP }}</h1>
+              <h2>R$ {{ number_format($products->precoP, 2, ',', '.') }}</h2>
+              <p class="description-product">{{ $products->descP }}</p>
 
-    <main class="product-page">
-        <div class="container">
-            <section class="product-details">
-                <div class="product-image">
-                    <img src="/images/{{ $products->imagem }}" alt="{{ $products->nomeP }}">
-                </div>
-                
-                <div class="product-info">
-
-                <h1 class="title-product">{{ $products->nomeP }}</h1>
-                <h2>R$ {{ number_format($products->precoP, 2, ',', '.') }}</h2>
-                <p class="description-product">{{ $products->descP }}</p>
-
-                    <div class="actions">
-                        <a href="./PaginaUsuario.html" class="contact">Entre em contato</a>
-                        <a href="./PaginaUsuario.html" class="gallery">Veja Galeria</a>
-                    </div>
-                </div>
-            </section>
-    
-            <section class="related-products">
-                <h2 class="title">Produtos relacionados</h2>
-                <div class="related-items">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <div class="card-img">
-                          <img src="/assets/images/bolsa.jpg" class="card-img-top" alt="Produto 1">
-                          <div class="hover-text">
-                            <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                            <p class="hover-artesao">Mariana Costa</p>
-                          </div>
-                      </div>
+                  <div class="actions">
+                      <a href="./PaginaUsuario.html" class="contact">Entre em contato</a>
+                      <a href="./PaginaUsuario.html" class="gallery">Veja Galeria</a>
                   </div>
+              </div>
+          </section>
+
+          <section class="related-products">
+              <h2 class="title">Produtos relacionados</h2>
+              <div class="related-items">
+                <div class="row">
                   <div class="col-md-3">
                     <div class="card-img">
                         <img src="/assets/images/bolsa.jpg" class="card-img-top" alt="Produto 1">
@@ -109,60 +57,26 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-3">
+              <div class="card-img">
+                  <img src="/assets/images/bolsa.jpg" class="card-img-top" alt="Produto 1">
+                  <div class="hover-text">
+                    <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
+                    <p class="hover-artesao">Mariana Costa</p>
                   </div>
-                </div>
-                <div class="view-box">
-                    <a class="view-all" href="./Marketplace.html">Conheça todos os produtos</a>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <footer class="bg-dark text-white py-4 footer-revetart">
-        <div class="container">
-          <div class="row">
-              <div class="col-md-3">
-                  <h3>Reventart</h3>
-                  <p>Reventart é o marketplace líder para artesãos sustentáveis, conectando criadores que transformam materiais recicláveis em arte única com consumidores conscientes.</p>
-              </div>
-              <div class="col-md-3">
-                  <h3>Categorias</h3>
-                  <ul>
-                      <li><a href="#">Decoração Sustentável</a></li>
-                      <li><a href="#">Moda Reciclada</a></li>
-                      <li><a href="#">Móveis Ecológicos</a></li>
-                      <li><a href="#">Bijuterias Sustentáveis</a></li>
-                      <li><a href="#">Arte e Esculturas</a></li>
-                  </ul>
-              </div>
-              <div class="col-md-3">
-                  <h3>Empresa</h3>
-                  <ul>
-                      <li><a href="#">Sobre Nós</a></li>
-                      <li><a href="#">Como Funciona</a></li>
-                      <li><a href="#">Termos & Condições</a></li>
-                      <li><a href="#">Política de Privacidade</a></li>
-                      <li><a href="#">Contato</a></li>
-                  </ul>
-              </div>
-              <div class="col-md-3">
-                  <h3>Conta</h3>
-                  <ul>
-                      <li><a href="#">Entrar / Registrar</a></li>
-                      <li><a href="#">Ver Carrinho</a></li>
-                      <li><a href="#">Política de Devolução</a></li>
-                      <li><a href="#">Torne-se um Artesão</a></li>
-                      <li><a href="#">Programa de Afiliados</a></li>
-                  </ul>
               </div>
           </div>
-          <div class="text-center mt-3">
-              <p>Copyright © 2024 Reventart. Todos os Direitos Reservos</p>
-          </div>
-        </div>
-      </footer>
+                </div>
+              </div>
+              <div class="view-box">
+                  <a class="view-all" href="./Marketplace.html">Conheça todos os produtos</a>
+              </div>
+          </section>
+      </div>
+  </main>
+@endsection
+
+    
 
 
-    <script src="/assets/bootstrap/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-</body>
-</html>
+    
