@@ -25,6 +25,7 @@
     flex-direction: row;
     width: 100%;
     padding: 10px 40px;
+    padding-right: 0;
     align-items: center;
 }
 .header .container .header-perfil .user-info .photo-profile{
@@ -56,12 +57,23 @@
 }
 
 
+
+.header .container .header-perfil .editar-perfil{
+    padding: 10px 16px;
+    position: absolute;
+    color: #FFFFFF;
+    background: #92B66C;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
 .header .container .header-perfil .user-info .redes-user{
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0 20px;
     border-left: 3px solid #92B66C;
+    margin-left: auto;
 }
 
 .header .container .header-perfil .user-info .redes-user .redes{
@@ -150,7 +162,7 @@
 }
 
 
-#contato{
+.content-contato{
     padding: 20px;
 }
 

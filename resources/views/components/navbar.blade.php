@@ -17,7 +17,7 @@
                     </ul>
                     <div class="action-nav">
                         @if(session('user_name'))
-                            <li class="user navbar-item">Olá, {{ session('user_name') }}!</li>
+                            <li class="user navbar-item"><a href="{{ route('user.profile') }}"> Olá, {{ session('user_name') }}!</a></li>
                             <li class="logout navbar-item"><a href="/logout">Sair</a></li>
                         @else
                             <li class="login-btn navbar-item"><a href="/login">Login</a></li>

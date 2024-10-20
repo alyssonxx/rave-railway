@@ -100,6 +100,9 @@
 .header-reventart .nav-revetart .action-nav .user{
     font-weight: bold;
 }
+.header-reventart .nav-revetart .action-nav .user a{
+    color:#000000
+}
 .header-reventart .nav-revetart .action-nav a{
     color: #FFFFFF;
     text-decoration: none;

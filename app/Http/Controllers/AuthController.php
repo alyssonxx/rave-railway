@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 
@@ -50,7 +50,6 @@ class AuthController extends Controller
         return redirect()->intended('/login');
     }
 
-
     // Exibe o formulário de login
     public function showLoginForm()
     {
@@ -84,7 +83,10 @@ class AuthController extends Controller
 
             // Retorna uma resposta JSON de sucesso
             // return response()->json(['success' => true]);
-            return redirect()->route('pages.Home')->with('success', 'Login realizado com sucesso!');
+            // return redirect()->route('pages.Home')->with('success', 'Login realizado com sucesso!');
+            // Redireciona para a página de perfil do usuário autenticado
+
+            return redirect()->route('user.profile')->with('success', 'Login realizado com sucesso!');
         }
 
         // Se as credenciais forem inválidas, retorna um erro
@@ -101,40 +103,44 @@ class AuthController extends Controller
         return redirect('/login'); // Redireciona para a página de login
     }
 
-    // Página protegida (exemplo de dashboard)
-    public function redirectHome()
+
+    public function profile()
     {
-        return view('pages.Home');  
+        // Obtém o usuário autenticado
+        $user = Auth::user();
+
+        // Retorna a view de perfil do usuário passando os dados do usuário
+        return view('pages.usuario.meuPerfil', compact('user'));
     }
 
 
-    public function edit($id)
-    {
-        // Recupera o usuário pelo ID
-        $user = User::findOrFail($id);
+    // public function edit($id)
+    // {
+    //     // Recupera o usuário pelo ID
+    //     $user = User::findOrFail($id);
     
-        // Retorna a view com o usuário
-        return view('pages.EditarPerfil', compact('user'));
-    }
+    //     // Retorna a view com o usuário
+    //     return view('pages.EditarPerfil', compact('user'));
+    // }
 
-    public function update(Request $request, $id)
-    {
-        // Validação dos campos
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,'.$id,
-            'descricao' => 'nullable|string',
-            'instagram' => 'nullable|string',
-            'whatsapp' => 'nullable|string',
-        ]);
+    // public function update(Request $request, $id)
+    // {
+    //     // Validação dos campos
+    //     $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'email' => 'required|string|email|max:255|unique:users,email,'.$id,
+    //         'descricao' => 'nullable|string',
+    //         'instagram' => 'nullable|string',
+    //         'whatsapp' => 'nullable|string',
+    //     ]);
     
-        // Atualiza os dados do usuário
-        $user = User::findOrFail($id);
-        $user->update($request->all());
+    //     // Atualiza os dados do usuário
+    //     $user = User::findOrFail($id);
+    //     $user->update($request->all());
         
     
-        return redirect()->route('user.profile')->with('success', 'Perfil atualizado com sucesso!');
-    }
+    //     return redirect()->route('user.profile')->with('success', 'Perfil atualizado com sucesso!');
+    // }
 
 }
 
