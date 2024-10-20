@@ -45,7 +45,7 @@ class ProdutoController extends Controller
         $product->nomeP = $validatedData['nomeP'];
         $product->descP = $validatedData['descP'];
         $product->precoP = $validatedData['precoP'];
-        $product->user_id = Auth::id(); // Vincular ao usuário autenticado
+        $product->id_usuario = Auth::id(); // Vincular ao usuário autenticado
     
         // Verificar se uma imagem foi enviada e processá-la
         if ($request->hasFile('imagem') && $request->file('imagem')->isValid()) {
