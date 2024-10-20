@@ -33,7 +33,7 @@
             @foreach ($events as $event)
                 <a href="/pagina-produto/{{ $event->id }}" class="col-md-4">
                     <div class="card-img">
-                        <img src="/images/{{ $event->imagem }}" class="card-img-top" alt="Produto {{ $event->id }}">
+                        <img src="{{ $event->imagem }}" class="card-img-top" alt="Produto {{ $event->id }}">
                         <div class="hover-text">
                             <p class="hover-title">{{ $event->nomeP }}</p>
                             <p class="hover-artesao">{{ $event->descP }}</p>
