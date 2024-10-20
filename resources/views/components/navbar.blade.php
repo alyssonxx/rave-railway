@@ -2,7 +2,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light nav-revetart">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ route('pages.Home') }}">
                     <img class="logo" src="/assets/images/logo.png" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -16,8 +16,13 @@
                         <li class="nav-item"><a class="nav-link" href="#">Como Funciona</a></li>
                     </ul>
                     <div class="action-nav">
-                        <!-- <span class="navbar-text">Olá, <strong>Usuário</strong></span> -->
-                        <button class="btn btn-primary" type="button">Acessar Conta</button>
+                        @if(session('user_name'))
+                            <li class="user navbar-item">Olá, {{ session('user_name') }}!</li>
+                            <li class="logout navbar-item"><a href="/logout">Sair</a></li>
+                        @else
+                            <li class="login-btn navbar-item"><a href="/login">Login</a></li>
+                            <li class="register-btn navbar-item"><a href="/register">Registrar</a></li>
+                        @endif
                     </div>
                 </div>
             </div>

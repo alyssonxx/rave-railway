@@ -12,7 +12,6 @@
         <div class="banner-text text-center">
         </div>
     </section>
-
     <!-- Seção de Categorias -->
     <section class="categories py-5">
         <div class="container text-center">

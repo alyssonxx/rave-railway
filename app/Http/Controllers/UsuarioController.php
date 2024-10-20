@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Users;
-use App\Models\Productso;
+use App\Models\Products;
 use App\Models\Comentarios;
 use Illuminate\Http\Request;
 

@@ -10,21 +10,29 @@
 </head>
 <body>
     <div class="login-container">
+        
         <div class="login-box">
-            <img src="/assets/images/logo.png" alt="Logo" class="logo">
+            <a href="{{ route('pages.Home') }}"><img src="/assets/images/logo.png" alt="Logo" class="logo"></a>
             <h2>Entrar</h2>
-            <form action="#" method="POST">
+            @if ($errors->any())
+                <div>
+                    <strong>{{ $errors->first() }}</strong>
+                </div>
+            @endif
+            <form  id="loginForm" action="/login" method="POST">
+                @csrf
                 <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Coloque seu email" required>
+                <input name="email" type="email" id="email" placeholder="Coloque seu email" required>
                 
                 <label for="senha">Senha</label>
-                <input type="password" id="senha" placeholder="Coloque sua senha" required>
+                <input name="password" type="password" id="password" placeholder="Coloque sua senha" required>
                 
                 <button type="submit" class="login-btn">Entrar <span class="icon">⮞</span></button>
             </form>
-            <p>Não tem uma conta? <a href="registro.html">Clique aqui pra se registrar</a></p>
+            <p>Não tem uma conta? <a href="{{ route('register') }}">Clique aqui pra se registrar</a></p>
         </div>
     </div>
     <script src="./assets/bootstrap/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="/assets/libs/jquery/js/jquery-3.6.0.min.js""></script>
 </body>
 </html>

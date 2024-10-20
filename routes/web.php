@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +16,9 @@ use App\Http\Controllers\ProdutoController;
 */
 
 // Paginas
-Route::get('/', function () {
-    return view('pages.Home');
-});
-Route::get('/login', function () {
-    return view('pages.Login');
-});
-Route::get('/register', function () {
-    return view('pages.Registro');
-});
+
+Route::get('/', [ProdutoController::class, 'home'])->name('pages.Home');
+
 Route::get('/pagina-produto/{id}', [ProdutoController::class, 'show'])->name('pages.paginaproduto');
 
 Route::get('/usuario', function () {
@@ -36,3 +31,20 @@ Route::get('/marketplace', [ProdutoController::class, 'index'])->name('produto.m
 Route::get('/pagina_do_usuario',[UsuarioController::class, 'paginaUsuario'])->name('pagina.usuario');
 
 
+
+Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [AuthController::class, 'register']);
+
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+// Protegendo a rota do dashboard para apenas usuários autenticados
+Route::get('/dashboard', [AuthController::class, 'redirectHome'])->middleware('auth');
+
+
+// Route::get('/', [AuthController::class, 'editarPerfil'])->name('pages.EditarPerfil');
+Route::get('/user/edit/{id}', [AuthController::class, 'edit'])->name('user.edit');
+Route::put('/user/update/{id}', [AuthController::class, 'update'])->name('user.update');

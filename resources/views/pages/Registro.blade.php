@@ -11,23 +11,35 @@
 <body>
     <div class="register-container">
         <div class="register-box">
-            <img src="/assets/images/logo.png" alt="Logo" class="logo">
+            <a href="{{ route('pages.Home') }}"><img src="/assets/images/logo.png" alt="Logo" class="logo"></a>
             <h2>Registrar</h2>
-            <form action="#" method="POST">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" placeholder="Coloque seu nome" required>
-                
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Coloque seu email" required>
-                
-                <label for="senha">Senha</label>
-                <input type="password" id="senha" placeholder="Coloque sua senha" required>
-                
-                <button type="submit" class="register-btn">Registrar <span class="icon">⮞</span></button>
+            <form id="registerForm" action="/register" method="POST">
+                @csrf
+                <div>
+                    <label for="name">Nome</label>
+                    <input type="text" name="name" id="name" required>
+                </div>
+                <div>
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div>
+                    <label for="password">Senha</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <div>
+                    <label for="password_confirmation">Confirme sua senha</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" required>
+                </div>
+                <button class="register-btn" type="submit">Registrar</button>
             </form>
-            <p>Tem uma conta? <a href="login.html">Clique aqui pra voltar</a></p>
+            <p>Tem uma conta? <a href="{{ route('login') }}">Clique aqui pra voltar</a></p>
+        
+        <div id="error-messages" class="alert alert-danger" style="display:none;"></div>
+        <div id="success-message" class="alert alert-success" style="display:none;"></div>
         </div>
     </div>
+    <script src="/assets/libs/jquery/js/jquery-3.6.0.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>

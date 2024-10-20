@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Storage;
 
 class ProdutoController extends Controller
 {
+
+
+    public function home(Request $request)
+    {
+        $data = $request->session()->all();
+        return view("pages.Home", ['teste' => $data]);
+    }
+
+
     // Exibir a lista de produtos
     public function index()
     {
