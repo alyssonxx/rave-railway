@@ -85,42 +85,46 @@ public function update(Request $request)
     $user->whatsapp = $request->input('whatsapp');
 
     try {
-        // Verifica se foi feito upload da imagem de perfil
-        if ($request->hasFile('profile_image') && $request->file('profile_image')->isValid()) {
-            $profileImage = $request->file('profile_image');
-            $profileImageName = md5($profileImage->getClientOriginalName() . microtime()) . '.' . $profileImage->getClientOriginalExtension();
-            $profileImagePath = $profileImage->storeAs('images', $profileImageName, 's3');
+        if ($request->hasFile('profile_image')) {
+            if ($request->file('profile_image')->isValid()) {
+                $profileImage = $request->file('profile_image');
+                $profileImageName = md5($profileImage->getClientOriginalName() . microtime()) . '.' . $profileImage->getClientOriginalExtension();
+                $profileImagePath = $profileImage->storeAs('images', $profileImageName, 's3');
 
-            // Debug: Verifique se o caminho foi gerado corretamente
-            if (empty($profileImagePath)) {
-                return back()->withErrors('Erro ao armazenar a imagem no S3.');
+                if (!$profileImagePath) {
+                    return back()->withErrors('Erro ao armazenar a imagem no S3.');
+                }
+
+                $user->profile_image = Storage::disk('s3')->url($profileImagePath);
+                \Log::info('Imagem de perfil salva: ' . $user->profile_image);
+            } else {
+                return back()->withErrors('Imagem de perfil não é válida.');
             }
-
-            $user->profile_image = Storage::disk('s3')->url($profileImagePath);
-            \Log::info('Imagem de perfil salva: ' . $user->profile_image);
         }
 
-        // Verifica se foi feito upload do banner
-        if ($request->hasFile('banner_image') && $request->file('banner_image')->isValid()) {
-            // Remove o banner anterior se existir
-            if (!empty($user->banner_image)) {
-                // Obter a chave do banner atual para exclusão
-                $bannerKey = str_replace(Storage::disk('s3')->url(''), '', $user->banner_image);
-                if (!empty($bannerKey)) {
-                    Storage::disk('s3')->delete($bannerKey);
+        if ($request->hasFile('banner_image')) {
+            if ($request->file('banner_image')->isValid()) {
+                // Remove o banner anterior se existir
+                if (!empty($user->banner_image)) {
+                    $bannerKey = str_replace(Storage::disk('s3')->url(''), '', $user->banner_image);
+                    if (!empty($bannerKey)) {
+                        Storage::disk('s3')->delete($bannerKey);
+                    }
                 }
+
+                $bannerImage = $request->file('banner_image');
+                $bannerImageName = md5($bannerImage->getClientOriginalName() . microtime()) . '.' . $bannerImage->getClientOriginalExtension();
+                $bannerImagePath = $bannerImage->storeAs('images', $bannerImageName, 's3');
+
+                if (!$bannerImagePath) {
+                    return back()->withErrors('Erro ao armazenar o banner no S3.');
+                }
+
+                $user->banner_image = Storage::disk('s3')->url($bannerImagePath);
+                \Log::info('Banner salvo: ' . $user->banner_image);
+            } else {
+                return back()->withErrors('Imagem de banner não é válida.');
             }
-
-            $bannerImage = $request->file('banner_image');
-            $bannerImageName = md5($bannerImage->getClientOriginalName() . microtime()) . '.' . $bannerImage->getClientOriginalExtension();
-            $bannerImagePath = $bannerImage->storeAs('images', $bannerImageName, 's3');
-
-            if (empty($bannerImagePath)) {
-                return back()->withErrors('Erro ao armazenar o banner no S3.');
-            }
-
-            $user->banner_image = Storage::disk('s3')->url($bannerImagePath);
-            \Log::info('Banner salvo: ' . $user->banner_image);
         }
 
         // Salva as alterações
@@ -128,10 +132,11 @@ public function update(Request $request)
 
         return redirect()->route('user.profile')->with('success', 'Perfil atualizado com sucesso!');
     } catch (\Exception $e) {
-        \Log::error('Erro ao atualizar o perfil: ' . $e->getMessage()); // Loga o erro
-        return back()->withErrors('Erro ao atualizar o perfil.'); // Mensagem mais genérica para o usuário
+        \Log::error('Erro ao atualizar o perfil: ' . $e->getMessage());
+        return back()->withErrors('Erro ao atualizar o perfil.');
     }
 }
+
 
 
 }

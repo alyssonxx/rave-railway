@@ -52,7 +52,7 @@
                 <label for="profile_image">Imagem de Perfil:</label>
                 <input type="file" class="form-control-file" id="profile_image" name="profile_image">
                 @if($user->profile_image)
-                    <img src="{{ Storage::url($user->profile_image) }}" alt="Imagem de Perfil" class="img-thumbnail mt-2" width="150">
+                    <img src="{{ $user->profile_image }}" alt="Imagem de Perfil" class="img-thumbnail mt-2" width="150">
                 @endif
             </div>
 
@@ -60,7 +60,7 @@
                 <label for="banner_image">Imagem de Banner:</label>
                 <input type="file" class="form-control-file" id="banner_image" name="banner_image">
                 @if($user->banner_image)
-                    <img src="{{ Storage::url($user->banner_image) }}" alt="Imagem de Banner" class="img-thumbnail mt-2" width="300">
+                    <img src="{{ $user->banner_image }}" alt="Imagem de Banner" class="img-thumbnail mt-2" width="300">
                 @endif
             </div>
 

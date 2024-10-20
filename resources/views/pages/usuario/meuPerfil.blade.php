@@ -9,10 +9,10 @@
   <section class="header">
     <div class="container">
       <div class="header-perfil">
-        <div class="banner-perfil" style="background-image: url('/assets/images/banner-example.jpg');"></div>
+        <div class="banner-perfil" style="background-image: url('<?= (!empty($user->banner_image) ? $user->banner_image : '/assets/images/banner-example.jpg' );?>');"></div>
         <div class="user-info">
           <div class="photo-profile">
-            <img src="/assets/images/profile-example.jpg" alt="">
+            <img src="<?= (!empty($user->profile_image) ? $user->profile_image : '/assets/images/profile-example.jpg' );?>" alt="">
           </div>
           <div class="text-profile">
             <h2 class="name"><?= (!empty($user->name) ? $user->name : 'Sem nome' );?></h2>
