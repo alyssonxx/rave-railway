@@ -51,3 +51,6 @@
         </form>
     </div>
 @endsection
+@section('scripts')
+    <script src="/js/product.js"></script>
+@endsection

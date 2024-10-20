@@ -5,11 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Auth;
 
 class ProdutoController extends Controller
 {
-
 
     public function home(Request $request)
     {
@@ -46,13 +45,14 @@ class ProdutoController extends Controller
         $product->nomeP = $validatedData['nomeP'];
         $product->descP = $validatedData['descP'];
         $product->precoP = $validatedData['precoP'];
+        $product->user_id = Auth::id(); // Vincular ao usuário autenticado
     
         // Verificar se uma imagem foi enviada e processá-la
         if ($request->hasFile('imagem') && $request->file('imagem')->isValid()) {
             $image = $request->file('imagem');
             $extension = $image->getClientOriginalExtension();
             $imageName = md5($image->getClientOriginalName() . microtime()) . '.' . $extension;
-            
+    
             // Tente armazenar a imagem no S3
             try {
                 $path = $image->storeAs('images', $imageName, 's3');
@@ -61,23 +61,22 @@ class ProdutoController extends Controller
                 if ($path) {
                     // Obter a URL da imagem no S3
                     $url = Storage::disk('s3')->url($path);
-                    
                     // Salvar a URL da imagem no banco de dados
                     $product->imagem = $url;
                 } else {
-                    return redirect()->back()->withErrors('Erro ao fazer upload da imagem para o S3.');
+                    return response()->json(['error' => 'Erro ao fazer upload da imagem para o S3.'], 500);
                 }
             } catch (\Exception $e) {
                 // Tratar exceções que podem ocorrer durante o upload
-                return redirect()->back()->withErrors('Erro durante o upload da imagem: ' . $e->getMessage());
+                return response()->json(['error' => 'Erro durante o upload da imagem: ' . $e->getMessage()], 500);
             }
         }
     
         // Salvar o produto no banco de dados
         $product->save();
     
-        // Redirecionar de volta ao marketplace com uma mensagem de sucesso
-        return redirect('/marketplace')->with('success', 'Produto criado com sucesso!');
+        // Retornar resposta de sucesso
+        return response()->json(['success' => 'Produto criado com sucesso!']);
     }
     
 

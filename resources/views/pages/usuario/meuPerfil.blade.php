@@ -23,11 +23,12 @@
           <div class="redes-user">
             <p class="text">Formas de Contato</p>
             <div class="redes">
-            <?= (!empty($user->email) ? "<img src='/assets/images/icones/mail.svg'>" : '' );?>
-            <?= (!empty($user->instagram) ? "<img src='/assets/images/icones/instagram.svg'>" : '' );?>
-            <?= (!empty($user->whatsapp) ? "<img src='/assets/images/icones/whatsapp.svg'>" : '' );?>
+              <?= (!empty($user->email) ? "<img src='/assets/images/icones/mail.svg'>" : '' );?>
+              <?= (!empty($user->instagram) ? "<img src='/assets/images/icones/instagram.svg'>" : '' );?>
+              <?= (!empty($user->whatsapp) ? "<img src='/assets/images/icones/whatsapp.svg'>" : '' );?>
             </div>
           </div>
+          <a class="editar" href="{{route('produto.create')}}">Adicionar Produto</a>
         </div>
       </div>
     </div>

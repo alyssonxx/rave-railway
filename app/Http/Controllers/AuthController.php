@@ -74,7 +74,7 @@ class AuthController extends Controller
             $user = Auth::user();
             $request->session()->put('user_role', $user->role); // Exemplo: armazenar o papel do usuário
             $request->session()->put('user_name', $user->name); // Armazenar o nome do usuário
-            $request->session()->put('user_id', $user->id); // Armazenar o nome do usuário
+            $request->session()->put('user_id', $user->id); // Armazenar o id do usuário
             $request->session()->put('user_email_verified_at', $user->email_verified_at);
             $request->session()->put('user_descricao', $user->descricao);
             $request->session()->put('user_instagram', $user->instagram);
@@ -113,34 +113,6 @@ class AuthController extends Controller
         return view('pages.usuario.meuPerfil', compact('user'));
     }
 
-
-    // public function edit($id)
-    // {
-    //     // Recupera o usuário pelo ID
-    //     $user = User::findOrFail($id);
-    
-    //     // Retorna a view com o usuário
-    //     return view('pages.EditarPerfil', compact('user'));
-    // }
-
-    // public function update(Request $request, $id)
-    // {
-    //     // Validação dos campos
-    //     $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|string|email|max:255|unique:users,email,'.$id,
-    //         'descricao' => 'nullable|string',
-    //         'instagram' => 'nullable|string',
-    //         'whatsapp' => 'nullable|string',
-    //     ]);
-    
-    //     // Atualiza os dados do usuário
-    //     $user = User::findOrFail($id);
-    //     $user->update($request->all());
-        
-    
-    //     return redirect()->route('user.profile')->with('success', 'Perfil atualizado com sucesso!');
-    // }
 
 }
 
