@@ -85,43 +85,49 @@ public function update(Request $request)
     $user->whatsapp = $request->input('whatsapp');
 
     try {
+        // Atualiza a imagem de perfil, se fornecida
         if ($request->hasFile('profile_image')) {
             if ($request->file('profile_image')->isValid()) {
+                // Remove a imagem anterior se existir
+                if (!empty($user->profile_image)) {
+                    $profileImageKey = str_replace(Storage::disk('s3')->url(''), '', $user->profile_image);
+                    Storage::disk('s3')->delete($profileImageKey);
+                }
+
                 $profileImage = $request->file('profile_image');
                 $profileImageName = md5($profileImage->getClientOriginalName() . microtime()) . '.' . $profileImage->getClientOriginalExtension();
                 $profileImagePath = $profileImage->storeAs('images', $profileImageName, 's3');
 
-                if (!$profileImagePath) {
-                    return back()->withErrors('Erro ao armazenar a imagem no S3.');
+                if ($profileImagePath) {
+                    $user->profile_image = Storage::disk('s3')->url($profileImagePath);
+                    \Log::info('Imagem de perfil salva: ' . $user->profile_image);
+                } else {
+                    return back()->withErrors('Erro ao armazenar a imagem de perfil no S3.');
                 }
-
-                $user->profile_image = Storage::disk('s3')->url($profileImagePath);
-                \Log::info('Imagem de perfil salva: ' . $user->profile_image);
             } else {
                 return back()->withErrors('Imagem de perfil não é válida.');
             }
         }
 
+        // Atualiza a imagem de banner, se fornecida
         if ($request->hasFile('banner_image')) {
             if ($request->file('banner_image')->isValid()) {
                 // Remove o banner anterior se existir
                 if (!empty($user->banner_image)) {
-                    $bannerKey = str_replace(Storage::disk('s3')->url(''), '', $user->banner_image);
-                    if (!empty($bannerKey)) {
-                        Storage::disk('s3')->delete($bannerKey);
-                    }
+                    $bannerImageKey = str_replace(Storage::disk('s3')->url(''), '', $user->banner_image);
+                    Storage::disk('s3')->delete($bannerImageKey);
                 }
 
                 $bannerImage = $request->file('banner_image');
                 $bannerImageName = md5($bannerImage->getClientOriginalName() . microtime()) . '.' . $bannerImage->getClientOriginalExtension();
                 $bannerImagePath = $bannerImage->storeAs('images', $bannerImageName, 's3');
 
-                if (!$bannerImagePath) {
+                if ($bannerImagePath) {
+                    $user->banner_image = Storage::disk('s3')->url($bannerImagePath);
+                    \Log::info('Banner salvo: ' . $user->banner_image);
+                } else {
                     return back()->withErrors('Erro ao armazenar o banner no S3.');
                 }
-
-                $user->banner_image = Storage::disk('s3')->url($bannerImagePath);
-                \Log::info('Banner salvo: ' . $user->banner_image);
             } else {
                 return back()->withErrors('Imagem de banner não é válida.');
             }
@@ -136,6 +142,7 @@ public function update(Request $request)
         return back()->withErrors('Erro ao atualizar o perfil.');
     }
 }
+
 
 
 
