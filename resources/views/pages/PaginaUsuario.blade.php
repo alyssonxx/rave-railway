@@ -15,10 +15,8 @@
             <img src="/assets/images/profile-example.jpg" alt="">
           </div>
           <div class="text-profile">
-            <h2 class="name">Mariana Costa</h2>
-            <p class="description">Mariana cria bolsas e acessórios de moda utilizando tecidos reaproveitados e
-              materiais recicláveis. Seu estilo combina criatividade e responsabilidade ambiental, trazendo uma nova
-              perspectiva para a moda sustentável. Suas peças são sinônimo de estilo consciente.</p>
+            <h2 class="name">$usuario->name</h2>
+            <p class="description">$usuario->descricao</p>
           </div>
           <span class="divider"></span>
           <div class="redes-user">
@@ -61,77 +59,15 @@
             <div class="row">
               <div class="col-md-3">
                 <div class="card-img">
+                    @foreach ($usuarios as $usuario)
                   <img src="/assets/images/pulseira.jpg" class="card-img-top" alt="Produto 1">
                   <div class="hover-text">
-                    <p class="hover-title">Pulseira Reciclada</p>
-                    <p class="hover-artesao">Mariana Costa</p>
+                    <p class="hover-title">{{$produto->nomeP}}</p>
+                    <p class="hover-artesao">{{$usuario->name}}</p>
                   </div>
                 </div>
               </div>
-              <div class="col-md-3">
-                <div class="card-img">
-                  <img src="/assets/images/bolsa.jpg" class="card-img-top" alt="Produto 1">
-                  <div class="hover-text">
-                    <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                    <p class="hover-artesao">Mariana Costa</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="card-img">
-                  <img src="/assets/images/pulseira.jpg" class="card-img-top" alt="Produto 1">
-                  <div class="hover-text">
-                    <p class="hover-title">Pulseira Reciclada</p>
-                    <p class="hover-artesao">Mariana Costa</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="card-img">
-                  <img src="/assets/images/bolsa.jpg" class="card-img-top" alt="Produto 1">
-                  <div class="hover-text">
-                    <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                    <p class="hover-artesao">Mariana Costa</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="card-img">
-                  <img src="/assets/images/pulseira.jpg" class="card-img-top" alt="Produto 1">
-                  <div class="hover-text">
-                    <p class="hover-title">Pulseira Reciclada</p>
-                    <p class="hover-artesao">Mariana Costa</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="card-img">
-                  <img src="/assets/images/bolsa.jpg" class="card-img-top" alt="Produto 1">
-                  <div class="hover-text">
-                    <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                    <p class="hover-artesao">Mariana Costa</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="card-img">
-                  <img src="/assets/images/pulseira.jpg" class="card-img-top" alt="Produto 1">
-                  <div class="hover-text">
-                    <p class="hover-title">Pulseira Reciclada</p>
-                    <p class="hover-artesao">Mariana Costa</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="card-img">
-                  <img src="/assets/images/bolsa.jpg" class="card-img-top" alt="Produto 1">
-                  <div class="hover-text">
-                    <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                    <p class="hover-artesao">Mariana Costa</p>
-                  </div>
-                </div>
-              </div>
-              
+              @endforeach
               <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                   <li class="page-item">
@@ -173,7 +109,7 @@
                 <a href="" target="_blank"><p class="social-name">wa.mi/+5590000-0000</p></a>
               </li>
             </ul>
-          </div>  
+          </div>
         </div>
         <div class="tab-pane fade" id="sobre" role="tabpanel" aria-labelledby="sobre-tab">
           <div class="container my-4">
@@ -190,7 +126,7 @@
               </p>
             </div>
           </div>
-          
+
 
         </div>
         <div class="tab-pane fade" id="avaliacoes" role="tabpanel" aria-labelledby="avaliacoes-tab">
@@ -246,4 +182,4 @@
     </div>
   </section>
 @endsection
-  
+
