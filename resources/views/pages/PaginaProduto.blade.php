@@ -10,7 +10,7 @@
       <div class="container">
           <section class="product-details">
               <div class="product-image">
-                  <img src="/images/{{ $products->imagem }}" alt="{{ $products->nomeP }}">
+                  <img src="{{ $products->imagem }}" alt="{{ $products->nomeP }}">
               </div>
               
               <div class="product-info">
