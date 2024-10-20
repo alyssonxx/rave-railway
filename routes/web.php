@@ -33,5 +33,6 @@ Route::get('/usuario', function () {
 Route::get('/produto/create', [ProdutoController::class, 'create'])->name('produto.create');
 Route::post('/produto/store', [ProdutoController::class, 'store'])->name('produto.store');
 Route::get('/marketplace', [ProdutoController::class, 'index'])->name('produto.marketplace');
+Route::get('/pagina_do_usuario',[UsuarioController::class, 'paginaUsuario'])->name('pagina.usuario');
 
 
