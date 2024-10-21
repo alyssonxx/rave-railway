@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Products;
-use App\Models\Comentarios;
+use App\Models\Comentario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -21,30 +21,23 @@ class UsuarioController extends Controller
         if (!$usuario) {
             return redirect()->back()->with('error', 'Vendedor não encontrado.');
         }
+// Buscando produtos do vendedor
+$produtos = Products::where('id_usuario', $id)->get();
 
-        // Buscando produtos do vendedor
-        $produtos = Products::where('id_usuario', $id)->get();
+// Buscando comentários dos produtos do vendedor
+$comentarios = Comentario::where('id_usuario_destino', $id)->with('usuario')->get();
 
-        // Buscando avaliações dos produtos do vendedor
-        if(!empty($comentarios)){
-            $comentarios = Comentarios::where('id_usuario_destino', $id)->get();
-        }
-        if(empty($comentarios)){
-            $comentarios = "Nenhum Comentario encontrado";
-        }
+// Se não houver comentários, defina como uma coleção vazia
+if ($comentarios->isEmpty()) {
+    $comentarios = collect(); // Isso garante que $comentarios seja uma coleção
+}
 
-        // Preparando os dados para a página
-        $dados = [
-            'vendedor' => $usuario,
-            'produtos' => $produtos,
-            'avaliacoes' => $comentarios,
-            'contatos' => [
-                'email' => $usuario->email,
-                'instagram' => $usuario->instagram,
-                'whatsapp' => $usuario->whatsapp,
-            ],
-        ];
-
+// Preparando os dados para a página
+return view('pages.PaginaUsuario', [
+    'perfil' => $usuario,
+    'produtos' => $produtos,
+    'comentarios' => $comentarios,
+]);
         // Retornando a view com os dados 
         return view('pages.PaginaUsuario', [
             'dadosVendedor' => $dados['vendedor'],
@@ -143,7 +136,20 @@ public function update(Request $request)
     }
 }
 
+public function armazenarComentario(Request $request, $perfilId)
+{
+    // Validação dos dados de entrada
+    $request->validate([
+        'comentario' => 'required|string|max:255',
+    ]);
 
-
-
+    // Criar um novo comentário
+    $comentario = new Comentario();
+    $comentario->id_usuario_origem = auth()->id(); // Ou o ID do usuário autenticado
+    $comentario->id_usuario_destino = $perfilId;
+    $comentario->comentario = $request->comentario;
+    $comentario->save();
+        return redirect()->route('pages.PaginaUsuario', $perfilId)->with('success', 'Comentário adicionado com sucesso!');
+    }
 }
+

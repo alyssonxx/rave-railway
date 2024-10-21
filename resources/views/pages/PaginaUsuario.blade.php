@@ -11,13 +11,12 @@
       <div class="header-perfil">
         <div class="banner-perfil" style="background-image: url('/assets/images/banner-example.jpg');"></div>
         <div class="user-info">
-          <div class="photo-profile">
-            <img src="/assets/images/profile-example.jpg" alt="">
-          </div>
-          <div class="text-profile">
-            <!-- <h2 class="name">{{$user->name}}</h2>/ -->
-            <p class="description"></p>
-          </div>
+        <div class="photo-profile">
+    <img src="{{ $perfil->profile_image ?? '/assets/images/profile-example.jpg' }}" alt="">
+</div>
+<div class="text-profile">
+    <p class="description">{{ $perfil->descricao ?? 'Descrição não disponível.' }}</p>
+</div>
           <span class="divider"></span>
           <div class="redes-user">
             <p class="text">Formas de Contato</p>
@@ -168,9 +167,29 @@
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
+
+      
+      <h3>Comentários</h3>
+
+<form action="{{ route('perfil.armazenarcomentario', $perfil->id) }}" method="POST">
+    @csrf
+    <textarea name="comentario" required></textarea>
+    <button type="submit">Comentar</button>
+</form>
+
+<ul>
+    @if($comentarios->isEmpty())
+        <li>Nenhum comentário ainda. Seja o primeiro a comentar!</li>
+    @else
+        @foreach($comentarios as $comentario)
+            <li>{{ $comentario->comentario }} - {{ $comentario->usuario->name }}</li>
+        @endforeach
+    @endif
+</ul>
     </div>
   </section>
 @endsection

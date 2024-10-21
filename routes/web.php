@@ -27,7 +27,7 @@ Route::get('/produto/create', [ProdutoController::class, 'create'])->name('produ
 Route::post('/produto/store', [ProdutoController::class, 'store'])->name('produto.store')->middleware('auth');
 Route::get('/marketplace', [ProdutoController::class, 'index'])->name('produto.marketplace');
 
-Route::get('/usuario', [UsuarioController::class, 'paginaUsuario'])->name('pagina.usuario');
+Route::get('/usuario/{id}', [UsuarioController::class, 'paginaUsuario'])->name('pages.PaginaUsuario');
 
 
 
@@ -48,3 +48,8 @@ Route::put('/atualizar-perfil', [UsuarioController::class, 'update'])->name('use
 
 
 Route::get('/meu-perfil', [AuthController::class, 'profile'])->name('user.profile')->middleware('auth');
+Route::post('/usuario/{perfil}', [UsuarioController::class, 'armazenarComentario'])->middleware('auth');
+
+
+Route::post('/perfil/{perfil}/armazenarcomentario', [UsuarioController::class, 'armazenarComentario'])->name('perfil.armazenarcomentario');
+
