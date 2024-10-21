@@ -76,7 +76,7 @@ class ProdutoController extends Controller
         $product->save();
     
         // Retornar resposta de sucesso
-        return response()->json(['success' => 'Produto criado com sucesso!']);
+        return redirect()->route('user.profile')->with('success', 'Produto criado com sucesso!');
     }
     
 

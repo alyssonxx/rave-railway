@@ -23,8 +23,8 @@ Route::get('/', [ProdutoController::class, 'home'])->name('pages.Home');
 Route::get('/pagina-produto/{id}', [ProdutoController::class, 'show'])->name('pages.paginaproduto');
 
 
-Route::get('/produto/create', [ProdutoController::class, 'create'])->name('produto.create');
-Route::post('/produto/store', [ProdutoController::class, 'store'])->name('produto.store');
+Route::get('/produto/create', [ProdutoController::class, 'create'])->name('produto.create')->middleware('auth');
+Route::post('/produto/store', [ProdutoController::class, 'store'])->name('produto.store')->middleware('auth');
 Route::get('/marketplace', [ProdutoController::class, 'index'])->name('produto.marketplace');
 
 Route::get('/usuario', [UsuarioController::class, 'paginaUsuario'])->name('pagina.usuario');
