@@ -51,7 +51,7 @@
         </div>
     </section>
 
-    <!-- Seção de Seleção em Destaque -->
+<!-- Seção de Produtos em Destaque -->
     <section class="featured-products">
         <div class="container">
             <div class="featured-header">
@@ -59,46 +59,25 @@
                 <span class="divider"></span>
                 <p>Descubra as Escolhas Que Estão em Alta no Momento</p>
             </div>
-            <div class="featured-container">
-                <div class="col-md-3">
-                    <div class="card-img">
-                        <img src="/assets/images/bolsa2.jpg" class="card-img-top" alt="Produto 1">
-                        <div class="hover-text">
-                            <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                            <p class="hover-artesao">Mariana Costa</p>
+        <div class="row product-destaque">
+            @if(isset($produtosRandom) && $produtosRandom->isNotEmpty())
+                @foreach($produtosRandom as $produto)
+                    <div class="col-md-3">
+                        <div class="card-img">
+                            <img src="{{ $produto->imagem }}" class="card-img-top" alt="{{ $produto->nomeP }}">
+                            <div class="hover-text">
+                                <p class="hover-title">{{ $produto->nomeP }}</p>
+                                <p class="hover-artesao">{{ $produto->artesao ?? 'Artesão Desconhecido' }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card-img">
-                        <img src="/assets/images/bolsa2.jpg" class="card-img-top" alt="Produto 1">
-                        <div class="hover-text">
-                            <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                            <p class="hover-artesao">Mariana Costa</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card-img">
-                        <img src="/assets/images/bolsa2.jpg" class="card-img-top" alt="Produto 1">
-                        <div class="hover-text">
-                            <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                            <p class="hover-artesao">Mariana Costa</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card-img">
-                        <img src="/assets/images/bolsa2.jpg" class="card-img-top" alt="Produto 1">
-                        <div class="hover-text">
-                            <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                            <p class="hover-artesao">Mariana Costa</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                @endforeach
+            @else
+                <p class="text-center">Nenhum produto em destaque no momento.</p>
+            @endif
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Container verde para "Junte-se a nós" -->
     <section class="join-us-section">
@@ -204,54 +183,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="testimonials-card">
-                        <p class="mb-1 text-start">
-                            Comprei uma bolsa feita pela Mariana e fiquei impressionada com a qualidade e o design. Saber que é feita com materiais recicláveis me deixa ainda mais feliz em usá-la todos os dias!
-                        </p>
-                        <div class="d-flex align-items-start flex-column mb-3">
-                            <div class="me-2">
-                                <span class="text-warning">&#9733;</span>
-                                <span class="text-warning">&#9733;</span>
-                                <span class="text-warning">&#9733;</span>
-                                <span class="text-warning">&#9733;</span>
-                                <span class="text-warning">&#9733;</span>
-                            </div>
-                            <span class="text-muted">Beatriz Souza</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <img src="/assets/images/bolsa.jpg" alt="Bolsa de Tecido Reaproveitado" class="img-thumbnail me-3" style="width: 70px; height: 70px; object-fit: cover;">
-                            <div>
-                                <h6 class="mb-0">Bolsa de Tecido Reaproveitado</h6>
-                                <p class="text-muted mb-0">R$ 150,00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonials-card">
-                        <p class="mb-1 text-start">
-                            Comprei uma bolsa feita pela Mariana e fiquei impressionada com a qualidade e o design. Saber que é feita com materiais recicláveis me deixa ainda mais feliz em usá-la todos os dias!
-                        </p>
-                        <div class="d-flex align-items-start flex-column mb-3">
-                            <div class="me-2">
-                                <span class="text-warning">&#9733;</span>
-                                <span class="text-warning">&#9733;</span>
-                                <span class="text-warning">&#9733;</span>
-                                <span class="text-warning">&#9733;</span>
-                                <span class="text-warning">&#9733;</span>
-                            </div>
-                            <span class="text-muted">Beatriz Souza</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <img src="/assets/images/bolsa.jpg" alt="Bolsa de Tecido Reaproveitado" class="img-thumbnail me-3" style="width: 70px; height: 70px; object-fit: cover;">
-                            <div>
-                                <h6 class="mb-0">Bolsa de Tecido Reaproveitado</h6>
-                                <p class="text-muted mb-0">R$ 150,00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonials-card">
+                        
                         <p class="mb-1 text-start">
                             Comprei uma bolsa feita pela Mariana e fiquei impressionada com a qualidade e o design. Saber que é feita com materiais recicláveis me deixa ainda mais feliz em usá-la todos os dias!
                         </p>
@@ -275,58 +207,36 @@
                     </div>
                 </div>
                 
+                
             </div>
         </div>
     </section>
 
-    <!-- Colaboradores -->
-    <section class="collaborators py-5">
+
+<!-- Colaboradores em Destaque -->
+<section class="collaborators py-5">
         <div class="container">
             <h2 class="text-center mb-4">Colaboradores em Destaque</h2>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="/assets/images/profile-example.jpg" class="card-img-top" alt="Joana Silva com seu cachorro">
-                        <div class="card-body">
-                        <h5 class="card-title">Joana Silva</h5>
-                        <p class="card-text">
-                            Joana transforma materiais descartados, como madeira e vidro, em peças únicas de decoração para casas sustentáveis. Sua paixão pela natureza é refletida em cada detalhe das suas criações artesanais. Com mais de 5 anos de experiência, ela acredita que cada objeto pode ter uma nova vida.
-                        </p>
-                        <a href="#" class="btn btn-success">
-                            Conheça agora <i class="bi bi-box-arrow-up-right"></i>
-                        </a>
+            @if(isset($colaboradoresRandom) && $colaboradoresRandom->isNotEmpty())
+                @foreach($colaboradoresRandom as $colaborador)
+                    <div class="col-md-4">
+                        <div class="card">
+                        <img src="/assets/images/vaso.jpg" class="card-img-top" alt="{{ $colaborador->name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $colaborador->name }}</h5>
+                                <p class="card-text">{{ $colaborador->descricao }}</p>
+                                <a href="{{ route('pages.PaginaUsuario', $colaborador->id) }}" class="btn btn-success">
+                                    Conheça agora <i class="bi bi-box-arrow-up-right"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="/assets/images/profile-example.jpg" class="card-img-top" alt="Joana Silva com seu cachorro">
-                        <div class="card-body">
-                        <h5 class="card-title">Joana Silva</h5>
-                        <p class="card-text">
-                            Joana transforma materiais descartados, como madeira e vidro, em peças únicas de decoração para casas sustentáveis. Sua paixão pela natureza é refletida em cada detalhe das suas criações artesanais. Com mais de 5 anos de experiência, ela acredita que cada objeto pode ter uma nova vida.
-                        </p>
-                        <a href="#" class="btn btn-success">
-                            Conheça agora <i class="bi bi-box-arrow-up-right"></i>
-                        </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="/assets/images/profile-example.jpg" class="card-img-top" alt="Joana Silva com seu cachorro">
-                        <div class="card-body">
-                        <h5 class="card-title">Joana Silva</h5>
-                        <p class="card-text">
-                            Joana transforma materiais descartados, como madeira e vidro, em peças únicas de decoração para casas sustentáveis. Sua paixão pela natureza é refletida em cada detalhe das suas criações artesanais. Com mais de 5 anos de experiência, ela acredita que cada objeto pode ter uma nova vida.
-                        </p>
-                        <a href="#" class="btn btn-success">
-                            Conheça agora <i class="bi bi-box-arrow-up-right"></i>
-                        </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                @endforeach
+            @else
+                <p class="text-center">Nenhum colaborador disponível no momento.</p>
+            @endif
         </div>
-    </section>
+    </div>
+</section>
 @endsection

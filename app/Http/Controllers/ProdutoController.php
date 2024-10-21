@@ -4,18 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Products;
+use App\Models\User;
+use App\Models\Comentario;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
 class ProdutoController extends Controller
 {
 
-    public function home(Request $request)
-    {
-        $data = $request->session()->all();
-        return view("pages.Home", ['teste' => $data]);
-    }
 
+    public function home()
+    {
+        $produtosRandom = Products::inRandomOrder()->take(4)->get();
+        $colaboradoresRandom = User::inRandomOrder()->take(3)->get();
+    
+        return view('pages.home', compact('produtosRandom', 'colaboradoresRandom'));
+    }
 
     // Exibir a lista de produtos
     public function index()
