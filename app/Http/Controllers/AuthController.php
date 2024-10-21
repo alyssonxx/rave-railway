@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -104,13 +105,50 @@ class AuthController extends Controller
     }
 
 
+
     public function profile()
     {
         // Obtém o usuário autenticado
         $user = Auth::user();
 
+        // Instanciar o ProductController
+        $AuthC = new AuthController;
+
+        // Chamar o método getProdutosUser do ProductController
+        $produtos = $AuthC->getProdutosUser(Auth::id());
+        $comentarios = $AuthC->getComentarios(Auth::id());
+
+
         // Retorna a view de perfil do usuário passando os dados do usuário
-        return view('pages.usuario.meuPerfil', compact('user'));
+        return view('pages.usuario.meuPerfil', ['user' => $user,'produtos' => $produtos, 'comentarios' => $comentarios]);
+    }
+
+
+    public function getProdutosUser($id)
+    {
+        $qrProdutos = "
+            SELECT * FROM products WHERE id_usuario = {$id}
+        ";
+    
+        // Execute a consulta
+        $produtos = DB::select($qrProdutos);
+        if(!empty($produtos)){
+            return $produtos; // Retorna os produtos
+        }
+        return [];
+    }
+    public function getComentarios($id)
+    {
+        $qrComentarios = "
+            SELECT * FROM comentarios WHERE id_usuario_destino = {$id}
+        ";
+    
+        // Execute a consulta
+        $Comentarios = DB::select($qrComentarios);
+        if(!empty($Comentarios)){
+            return $Comentarios; // Retorna os produtos
+        }
+        return [];
     }
 
 

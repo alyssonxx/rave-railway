@@ -11,6 +11,7 @@
     display: flex;
     width: 100%;
     flex-direction: column;
+    position: relative;
 }
 .header .container .header-perfil .banner-perfil{
     height: 500px;
@@ -64,7 +65,17 @@
     color: #FFFFFF;
     background: #92B66C;
     border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    position: absolute;
+    left: 0px;
+    bottom: -100px;
+}
+
+.header .container .header-perfil .user-info .editar{
+    padding: 8px 16px;
+    background: #92B66C;
+    border-radius: 5px;
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
 .header .container .header-perfil .user-info .redes-user{
@@ -116,6 +127,9 @@
 /* Tab Galeria */
 .galery-content .row{
     gap: 20px 0;
+}
+.galery-content .card-produto{
+    height: 280px;
 }
 .galery-content .card-img{
     overflow: hidden;
@@ -192,6 +206,26 @@
 .content-contato .list-social .social-name{
     margin: 0;
     font-weight: 400;
+}
+
+.section-content-perfil .comenteario-box{
+    position: relative;
+}
+
+.section-content-perfil .comenteario-box textarea{
+    width: 100%;
+    height: 100px;
+}
+
+.section-content-perfil .comenteario-box button{
+    position: absolute;
+        right: 0px;
+        bottom: -40px;
+        padding: 5px 20px;
+        border-radius: 5px;
+        background: #92B66C;
+        color: #ffffffff;
+        border: none;
 }
 
 @media (max-width: 992px){

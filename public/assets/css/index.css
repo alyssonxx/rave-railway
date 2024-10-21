@@ -215,6 +215,11 @@
     margin: 0;
 }
 
+.container-artesoes .hidden{
+    display: none !important;
+}
+
+
 
 /* Responsivo */
 

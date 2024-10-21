@@ -12,8 +12,8 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="{{ route('produto.marketplace') }}">Produtos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Artesãos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Como Funciona</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('pagina.artesoes') }}">Artesãos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('sobre') }}">Como Funciona</a></li>
                     </ul>
                     <div class="action-nav">
                         @if(session('user_name'))

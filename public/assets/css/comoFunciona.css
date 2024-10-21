@@ -1,0 +1,19 @@
+.about-us{
+    padding-top: 130px;
+}
+
+.about-us h1 {
+    font-size: 3em;
+    color: #27ae60;
+    margin-bottom: 20px;
+}
+
+.about-us p {
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    color: #555;
+}
+
+.about-us .card{
+    padding: 20px;
+}

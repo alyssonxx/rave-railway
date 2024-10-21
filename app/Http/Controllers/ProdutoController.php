@@ -90,4 +90,10 @@ class ProdutoController extends Controller
 
         return view('pages.PaginaProduto', compact('products'));
     }
+
+    
+    public function sobre(){
+        return view('pages.comoFunciona');
+    }
+
 }

@@ -1,0 +1,20 @@
+.container-artesoes{
+    padding-top: 130px;
+}
+
+.container-artesoes .card .card-img-top{
+    height: 300px;
+    object-fit: cover;
+}
+
+
+.container-artesoes .card .card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container-artesoes .card .card-body .btn{
+    background-color: #6F9E50;
+    border: none;
+}

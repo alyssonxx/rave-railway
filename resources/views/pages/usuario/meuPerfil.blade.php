@@ -13,12 +13,13 @@
         <div class="user-info">
           <div class="photo-profile">
             <img src="<?= (!empty($user->profile_image) ? $user->profile_image : '/assets/images/profile-example.jpg' );?>" alt="">
+            <a class="editar-perfil" href="{{route('user.edit')}}">?</a>
           </div>
           <div class="text-profile">
             <h2 class="name"><?= (!empty($user->name) ? $user->name : 'Sem nome' );?></h2>
             <p class="description"><?= (!empty($user->descricao) ? $user->descricao : 'Sem descrição' );?></p>
           </div>
-          <a class="editar-perfil" href="{{route('user.edit')}}">?</a>
+          
           <span class="divider"></span>
           <div class="redes-user">
             <p class="text">Formas de Contato</p>
@@ -28,12 +29,11 @@
               <?= (!empty($user->whatsapp) ? "<img src='/assets/images/icones/whatsapp.svg'>" : '' );?>
             </div>
           </div>
-          <a class="editar" href="{{route('produto.create')}}">Adicionar Produto</a>
+          <a class="editar class" href="{{route('produto.create')}}">Adicionar Produto</a>
         </div>
       </div>
     </div>
   </section>
-
   <section class="section-content-perfil">
     <div class="container">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -59,15 +59,17 @@
         <div class="tab-pane fade show active" id="galeria-{{$user->id}}" role="tabpanel" aria-labelledby="galeria-tab">
           <div class="container my-4 galery-content">
             <div class="row">
-                <div class="col-md-3">
-                  <div class="card-img">
-                      <img src="/assets/images/pulseira.jpg" class="card-img-top" alt="Produto 1">
-                      <div class="hover-text">
-                      <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                      <p class="hover-artesao">Mariana Costa</p>
-                      </div>
-                  </div>
-              </div>
+              @foreach ($produtos as $produto )
+                <div class='col-md-4 card-produto'>
+                  <a href="{{ route('pages.paginaproduto', $produto->id) }}" class='card-img'>
+                      <img src='{{ $produto->imagem }}' class='card-img-top' alt='Produto 1'>
+                      <div class='hover-text'>
+                      <p class='hover-title'>{{ $produto->nomeP }}</p>
+                      <p class='hover-artesao'>{{ $produto->descP  }}</p>
+                    </div>
+                  </a>
+                </div>
+              @endforeach
             </div>
           </div>
         </div>
@@ -101,53 +103,19 @@
 
         </div>
         <div class="tab-pane fade" id="avaliacoes-{{$user->id}}" role="tabpanel" aria-labelledby="avaliacoes-tab">
-          <div class="container my-4">
-            <h2 class="title-tab">Avaliações</h2>
-            <div class="border-bottom pb-4 mb-4">
+        <div class="container my-4">
+          
+          <h2 class="title-tab">Comentários</h2>
+          @foreach($comentarios as $comentario) 
+            <div class="border-bottom pt-2 mb-4">
               <p class="mb-1">
-                Comprei uma bolsa feita pela Mariana e fiquei impressionada com a qualidade e o design. Saber que é feita com materiais recicláveis me deixa ainda mais feliz em usá-la todos os dias!
+              <?= (!empty($comentario->comentario) ? $comentario->comentario : 'Comentario vazio' );?>
               </p>
-              <div class="d-flex align-items-center mb-3">
-                <div class="me-2">
-                  <span class="text-warning">&#9733;</span>
-                  <span class="text-warning">&#9733;</span>
-                  <span class="text-warning">&#9733;</span>
-                  <span class="text-warning">&#9733;</span>
-                  <span class="text-warning">&#9733;</span>
-                </div>
-                <span class="text-muted">Beatriz Souza</span>
-              </div>
-              <div class="d-flex align-items-center">
-                <img src="/assets/images/bolsa.jpg" alt="Bolsa de Tecido Reaproveitado" class="img-thumbnail me-3" style="width: 70px; height: 70px; object-fit: cover;">
-                <div>
-                  <h6 class="mb-0">Bolsa de Tecido Reaproveitado</h6>
-                  <p class="text-muted mb-0">R$ 150,00</p>
-                </div>
-              </div>
+
             </div>
-            <div class="border-bottom pb-4">
-              <p class="mb-1">
-                Comprei uma bolsa feita pela Mariana e fiquei impressionada com a qualidade e o design. Saber que é feita com materiais recicláveis me deixa ainda mais feliz em usá-la todos os dias!
-              </p>
-              <div class="d-flex align-items-center mb-3">
-                <div class="me-2">
-                  <span class="text-warning">&#9733;</span>
-                  <span class="text-warning">&#9733;</span>
-                  <span class="text-warning">&#9733;</span>
-                  <span class="text-warning">&#9733;</span>
-                  <span class="text-warning">&#9733;</span>
-                </div>
-                <span class="text-muted">Beatriz Souza</span>
-              </div>
-              <div class="d-flex align-items-center">
-                <img src="/assets/images/bolsa.jpg" alt="Bolsa de Tecido Reaproveitado" class="img-thumbnail me-3" style="width: 70px; height: 70px; object-fit: cover;">
-                <div>
-                  <h6 class="mb-0">Bolsa de Tecido Reaproveitado</h6>
-                  <p class="text-muted mb-0">R$ 150,00</p>
-                </div>
-              </div>
-            </div>
+          @endforeach
           </div>
+        </div>
         </div>
       </div>
     </div>
