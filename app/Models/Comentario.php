@@ -10,10 +10,17 @@ class Comentario extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id_usuario_origem', 'id_usuario_destino', 'comentario']; // Adicione os campos que podem ser preenchidos
+    protected $fillable = ['comentario', 'id_usuario_origem', 'id_comentario']; // Inclua todos os campos necessários
 
+    // Relação com o produto
+    public function produto()
+    {
+        return $this->belongsTo(Products::class, 'id', 'id_usuario');
+    }
+
+    // Relação com o usuário
     public function usuario()
-{
-    return $this->belongsTo(User::class, 'id_usuario_origem');
-}
+    {
+        return $this->belongsTo(User::class, 'id_usuario_origem', 'id');
+    }
 }
