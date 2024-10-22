@@ -19,7 +19,7 @@ class ProdutoController extends Controller
         $produtosRandomOito = Products::inRandomOrder()->take(8)->get();
         $colaboradoresRandom = User::inRandomOrder()->take(3)->get();
     
-        return view('pages.home', compact('produtosRandom', 'colaboradoresRandom', 'produtosRandomOito'));
+        return view('pages.Home', compact('produtosRandom', 'colaboradoresRandom', 'produtosRandomOito'));
     }
 
     // Exibir a lista de produtos
