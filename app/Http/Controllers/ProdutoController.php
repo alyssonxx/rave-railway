@@ -11,9 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ProdutoController extends Controller
 {
-
-
-    public function home()
+      public function home()
     {
         $produtosRandom = Products::inRandomOrder()->take(4)->get();
         $produtosRandomOito = Products::inRandomOrder()->take(8)->get();

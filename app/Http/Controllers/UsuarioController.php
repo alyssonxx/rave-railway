@@ -11,12 +11,15 @@ use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
+
+
     public function home()
     {
         $produtosRandomizados = Products::inRandomOrder()->take(4)->get();
         $colaboradoresEmDestaque = User::inRandomOrder()->take(3)->get();
+        $randomComentarios = Comentario::inRandomOrder()->take(3)->with('users')->get();
     
-        return view('pages.home', compact('produtosRandomizados', 'colaboradoresEmDestaque'));
+        return view('pages.home', compact('produtosRandomizados', 'colaboradoresEmDestaque', 'randomComentarios'));
     }
 
     public function paginaUsuario($id = null)
@@ -29,7 +32,7 @@ class UsuarioController extends Controller
             $produtos = Products::where('id_usuario', $id)->get();
     
 
-        $comentarios = Comentario::where('id_usuario_destino', $id)->with('usuario')->get(); // Certifique-se de que 'usuario' esteja relacionado corretamente no modelo Comentario
+        $comentarios = Comentario::where('id_usuario_destinatario', $id)->with('usuario')->get(); // Certifique-se de que 'usuario' esteja relacionado corretamente no modelo Comentario
     
 
         $dados = [
@@ -135,7 +138,7 @@ class UsuarioController extends Controller
 
         $comentario = new Comentario();
         $comentario->id_usuario_origem = auth()->id();
-        $comentario->id_usuario_destino = $perfilId;
+        $comentario->id_usuario_destinatario = $perfilId;
         $comentario->comentario = $request->comentario;
         $comentario->save();
 

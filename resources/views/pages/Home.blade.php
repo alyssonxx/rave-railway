@@ -127,31 +127,78 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="testimonials-card">
-                        
                         <p class="mb-1 text-start">
-                            Comprei uma bolsa feita pela Mariana e fiquei impressionada com a qualidade e o design. Saber que é feita com materiais recicláveis me deixa ainda mais feliz em usá-la todos os dias!
+                            A Galinha de Barro do Alexandre é uma peça encantadora! O cuidado nos detalhes e o uso de materiais naturais realmente mostram o talento do artesão.
                         </p>
                         <div class="d-flex align-items-start flex-column mb-3">
                             <div class="me-2">
-                                <span class="text-warning">&#9733;</span>
-                                <span class="text-warning">&#9733;</span>
-                                <span class="text-warning">&#9733;</span>
-                                <span class="text-warning">&#9733;</span>
-                                <span class="text-warning">&#9733;</span>
+                                <span class="text-warning">★</span>
+                                <span class="text-warning">★</span>
+                                <span class="text-warning">★</span>
+                                <span class="text-warning">★</span>
+                                <span class="text-warning">★</span>
                             </div>
-                            <span class="text-muted">Beatriz Souza</span>
+                            <span class="text-muted">Alexandre</span>
                         </div>
                         <div class="d-flex align-items-center">
-                            <img src="/assets/images/bolsa.jpg" alt="Bolsa de Tecido Reaproveitado" class="img-thumbnail me-3" style="width: 70px; height: 70px; object-fit: cover;">
+                            <img src="https://rave-railway.s3.us-east-2.amazonaws.com/images/d83848c8707748943c11dbae0f20a701.png" alt="Galinha de Barro" class="img-thumbnail me-3" style="width: 70px; height: 70px; object-fit: cover;">
                             <div>
-                                <h6 class="mb-0">Bolsa de Tecido Reaproveitado</h6>
-                                <p class="text-muted mb-0">R$ 150,00</p>
+                                <h6 class="mb-0">Galinha de Barro</h6>
+                                <span class="text-muted">Uma peça de barro em formato de galinha d' angola</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                
+
+                <div class="col-md-4">
+                    <div class="testimonials-card">
+                        <p class="mb-1 text-start">
+                            O Puff de Tonel é super confortável e resistente! A madeira reutilizada dá um toque rústico, e a ideia de usar um tonel é genial.
+                        </p>
+                        <div class="d-flex align-items-start flex-column mb-3">
+                            <div class="me-2">
+                                <span class="text-warning">★</span>
+                                <span class="text-warning">★</span>
+                                <span class="text-warning">★</span>
+                                <span class="text-warning">★</span>
+                                <span class="text-warning">★</span>
+                            </div>
+                            <span class="text-muted">Alexandre</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <img src="https://rave-railway.s3.us-east-2.amazonaws.com/images/d981412146c93e338f21679edf6af985.png" alt="Puff de Tonel" class="img-thumbnail me-3" style="width: 70px; height: 70px; object-fit: cover;">
+                            <div>
+                                <h6 class="mb-0">Puff de Tonel</h6>
+                                <span class="text-muted">Um puff feito de madeira e tonel</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="testimonials-card">
+                        <p class="mb-1 text-start">
+                            O Abajur Sustentável do Lucas é incrível! Perfeito para a decoração eco-friendly que estou montando em casa, além de super funcional.
+                        </p>
+                        <div class="d-flex align-items-start flex-column mb-3">
+                            <div class="me-2">
+                                <span class="text-warning">★</span>
+                                <span class="text-warning">★</span>
+                                <span class="text-warning">★</span>
+                                <span class="text-warning">★</span>
+                                <span class="text-warning">★</span>
+                            </div>
+                            <span class="text-muted">Lucas da Silva</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <img src="https://rave-railway.s3.us-east-2.amazonaws.com/images/9662b04416f8e670b5319a610ba5442a.jpeg" alt="Abajur Sustentável" class="img-thumbnail me-3" style="width: 70px; height: 70px; object-fit: cover;">
+                            <div>
+                                <h6 class="mb-0">Abajur Sustentável</h6>
+                                <span class="text-muted">Abajur feito com materiais sustentáveis</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
