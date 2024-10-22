@@ -13,34 +13,13 @@ class ProdutoController extends Controller
 {
 
 
-    public function home(Request $request)
+    public function home()
     {
-        // Pega produtos aleatórios
         $produtosRandom = Products::inRandomOrder()->take(4)->get();
         $produtosRandomOito = Products::inRandomOrder()->take(8)->get();
         $colaboradoresRandom = User::inRandomOrder()->take(3)->get();
-    
-        // Inicializa uma coleção para armazenar comentários
-        $comentarios = collect();
-    
-        // Para cada produto, pega 3 comentários aleatórios
-        foreach ($produtosRandom as $produto) {
-            $comentariosProduto = Comentario::where('id_produto', $produto->id)
-                ->with('usuario') // Carrega a relação com o usuário
-                ->inRandomOrder()
-                ->take(3)
-                ->get();
-            
-            // Adiciona à coleção de comentários
-            $comentarios = $comentarios->merge($comentariosProduto);
-        }
-    
-        return view("pages.Home", [
-            'produtosRandom' => $produtosRandom,
-            'produtosRandomOito' => $produtosRandomOito,
-            'colaboradoresRandom' => $colaboradoresRandom,
-            'comentarios' => $comentarios,
-        ]);
+
+        return view('pages.Home', compact('produtosRandom', 'colaboradoresRandom', 'produtosRandomOito'));
     }
 
     // Exibir a lista de produtos
