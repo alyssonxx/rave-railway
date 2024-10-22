@@ -10,7 +10,7 @@ class Comentario extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['comentario', 'id_usuario_origem', 'id']; // Inclua todos os campos necessários
+    protected $fillable = ['comentario', 'id_usuario_origem', 'id_comentario']; // Inclua todos os campos necessários
 
     // Relação com o produto
     public function produto()

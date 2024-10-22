@@ -16,9 +16,10 @@ class ProdutoController extends Controller
     public function home()
     {
         $produtosRandom = Products::inRandomOrder()->take(4)->get();
+        $produtosRandomOito = Products::inRandomOrder()->take(8)->get();
         $colaboradoresRandom = User::inRandomOrder()->take(3)->get();
     
-        return view('pages.home', compact('produtosRandom', 'colaboradoresRandom'));
+        return view('pages.home', compact('produtosRandom', 'colaboradoresRandom', 'produtosRandomOito'));
     }
 
     // Exibir a lista de produtos

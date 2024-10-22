@@ -193,13 +193,19 @@ body {
 /* Colaboradores */
 .collaborators .collaborator-card {
     text-align: center;
+    height: 100%;
 }
 
-.collaborators .collaborator-card img {
-    width: 150px;
-    height: 150px;
+.collaborators .collaborator-card .card-img-top {
+    height: 230px;
     object-fit: cover;
 
+}
+
+.collaborators .collaborator-card .card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .collaborators .collaborator-card h5 {

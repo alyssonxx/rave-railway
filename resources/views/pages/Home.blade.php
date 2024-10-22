@@ -51,6 +51,7 @@
         </div>
     </section>
 
+
 <!-- Seção de Produtos em Destaque -->
     <section class="featured-products">
         <div class="container">
@@ -100,78 +101,21 @@
             <h6 class="text-center mb-0">Conheça mais</h6>
             <h2 class="text-center mb-4">Nossos Produtos Mais Vendidos</h2>
             <div class="row product-destaque">
-                <div class="col-md-3">
-                    <div class="card-img">
-                        <img src="/assets/images/pulseira.jpg" class="card-img-top" alt="Produto 1">
-                        <div class="hover-text">
-                        <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                        <p class="hover-artesao">Mariana Costa</p>
+                @if(isset($produtosRandomOito) && $produtosRandomOito->isNotEmpty())
+                    @foreach($produtosRandomOito as $produto)
+                        <div class="col-md-3">
+                            <div class="card-img">
+                                <img src="{{ $produto->imagem }}" class="card-img-top" alt="{{ $produto->nomeP }}">
+                                <div class="hover-text">
+                                    <p class="hover-title">{{ $produto->nomeP }}</p>
+                                    <p class="hover-artesao">{{ $produto->artesao ?? 'Artesão Desconhecido' }}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card-img">
-                        <img src="/assets/images/bolsa.jpg" class="card-img-top" alt="Produto 1">
-                        <div class="hover-text">
-                        <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                        <p class="hover-artesao">Mariana Costa</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card-img">
-                        <img src="/assets/images/bolsa2.jpg" class="card-img-top" alt="Produto 1">
-                        <div class="hover-text">
-                        <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                        <p class="hover-artesao">Mariana Costa</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card-img">
-                        <img src="/assets/images/bolsa.jpg" class="card-img-top" alt="Produto 1">
-                        <div class="hover-text">
-                        <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                        <p class="hover-artesao">Mariana Costa</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card-img">
-                        <img src="/assets/images/pulseira.jpg" class="card-img-top" alt="Produto 1">
-                        <div class="hover-text">
-                        <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                        <p class="hover-artesao">Mariana Costa</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card-img">
-                        <img src="/assets/images/bolsa.jpg" class="card-img-top" alt="Produto 1">
-                        <div class="hover-text">
-                        <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                        <p class="hover-artesao">Mariana Costa</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card-img">
-                        <img src="/assets/images/bolsa2.jpg" class="card-img-top" alt="Produto 1">
-                        <div class="hover-text">
-                        <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                        <p class="hover-artesao">Mariana Costa</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card-img">
-                        <img src="/assets/images/bolsa.jpg" class="card-img-top" alt="Produto 1">
-                        <div class="hover-text">
-                        <p class="hover-title">Bolsa de Tecido Reaproveitado</p>
-                        <p class="hover-artesao">Mariana Costa</p>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @else
+                    <p class="text-center">Nenhum produto em destaque no momento.</p>
+                @endif
             </div>
         </div>
     </section>
@@ -221,8 +165,8 @@
             @if(isset($colaboradoresRandom) && $colaboradoresRandom->isNotEmpty())
                 @foreach($colaboradoresRandom as $colaborador)
                     <div class="col-md-4">
-                        <div class="card">
-                        <img src="/assets/images/vaso.jpg" class="card-img-top" alt="{{ $colaborador->name }}">
+                        <div class="card collaborator-card">
+                        <img src="<?= (!empty($colaborador->profile_image) ? $colaborador->profile_image : '/assets/images/profile-example.jpg' );?>" class="card-img-top" alt="{{ $colaborador->name }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $colaborador->name }}</h5>
                                 <p class="card-text">{{ $colaborador->descricao }}</p>
