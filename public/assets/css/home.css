@@ -172,10 +172,6 @@ body {
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin: 10px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 .testimonials-card p {
@@ -184,9 +180,6 @@ body {
     margin-bottom: 15px;
 }
 .testimonials-card h6{
-    text-align: start;
-}
-.testimonials-card .text-muted{
     text-align: start;
 }
 .testimonials-card h5 {
@@ -200,13 +193,19 @@ body {
 /* Colaboradores */
 .collaborators .collaborator-card {
     text-align: center;
+    height: 100%;
 }
 
-.collaborators .collaborator-card img {
-    width: 150px;
-    height: 150px;
+.collaborators .collaborator-card .card-img-top {
+    height: 230px;
     object-fit: cover;
 
+}
+
+.collaborators .collaborator-card .card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .collaborators .collaborator-card h5 {
