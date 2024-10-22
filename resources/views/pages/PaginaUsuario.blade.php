@@ -30,7 +30,6 @@
               <?= (!empty($dadosVendedor->whatsapp) ? "<img src='/assets/images/icones/whatsapp.svg'>" : '' );?>
             </div>
           </div>
-          <a class="editar class" href="{{route('produto.create')}}">Adicionar Produto</a>
         </div>
       </div>
     </div>
