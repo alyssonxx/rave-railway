@@ -8,19 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comentario extends Model
 {
+    protected $table = 'comentario'; 
     use HasFactory;
 
     protected $fillable = ['comentario', 'id_usuario_origem', 'id_comentario']; // Inclua todos os campos necessários
 
+    public $timestamps = false;
+
     // Relação com o produto
-    public function produto()
+    public function comentarios()
     {
-        return $this->belongsTo(Products::class, 'id', 'id_usuario');
+        return $this->hasMany(Comentarios::class, 'id_produto', 'id');
     }
 
-    // Relação com o usuário
     public function usuario()
     {
-        return $this->belongsTo(User::class, 'id_usuario_origem', 'id');
+        return $this->belongsTo(User::class, 'id');
     }
 }

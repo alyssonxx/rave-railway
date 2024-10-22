@@ -111,15 +111,14 @@
                 <button type="submit">Comentar</button>
             </form>
             @foreach($comentarios as $comentario) 
+
               <div class="border-bottom pt-2 mb-4">
                 <p class="mb-1">
                 <?= (!empty($comentario->comentario) ? $comentario->comentario : 'Comentario vazio' );?>
                 </p>
-                <div class="d-flex align-items-center mb-3">
-                  <span class="text-muted" style="font-style: italic;"> {{ $comentario->usuario->name }}</span>    
-                </div>
+
               </div>
-            @endforeach
+              @endforeach
             </div>
           </div>
         </div>

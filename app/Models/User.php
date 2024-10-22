@@ -44,12 +44,12 @@ class User extends Authenticatable
 
     public function comentariosRecebidos()
     {
-        return $this->hasMany(Comentario::class, 'id_usuario_destino');
+        return $this->hasMany(Comentarios::class, 'id_usuario_destinatario');
     }
     
     public function comentariosFeitos()
     {
-        return $this->hasMany(Comentario::class, 'id_usuario_origem');
+        return $this->hasMany(Comentarios::class, 'id_usuario_origem');
     }
 
 }

@@ -140,7 +140,7 @@ class AuthController extends Controller
     public function getComentarios($id)
     {
         $qrComentarios = "
-            SELECT * FROM comentarios WHERE id_usuario_destino = {$id}
+            SELECT * FROM comentarios WHERE id_usuario_destinatario = {$id}
         ";
     
         // Execute a consulta
